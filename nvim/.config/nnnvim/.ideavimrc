@@ -1,0 +1,102 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+:set keep-english-in-normal
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+set relativenumber
+Plug 'preservim/nerdtree'
+set ignorecase
+set incsearch
+set number
+set smartcase
+set hlsearch
+set timeoutlen=1000
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+set multiple-cursors
+map <c-x> <Action>(ShowHoverInfo)
+// Ctrl+N, Ctrl+P でキーワード補完
+parser.registerAction(KeyParser.MAPPING_INSERT, "HippieBackwardCompletion", Command.INSERT, Command.FLAG_CLEAR_STROKES,
+    new Shortcut(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK)))
+parser.registerAction(KeyParser.MAPPING_INSERT, "HippieCompletion", Command.INSERT, Command.FLAG_CLEAR_STROKES,
+    new Shortcut(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK)))
+map <c-x> <Action>(ShowErrorDescription)
+set scrolloff=5
+set showmode
+set showcmd
+set visualbell
+let mapleader = " "
+nmap <space> <Leader>
+set highlightedyank
+set easymotion
+set notimeout
+set timeoutlen=5003
+set which-key
+
+map <c-j> <Action>(PopupMenu-selectnext)
+map <c-k> <Action>(PopupMenu-selectprev)
+
+nnoremap <Leader>yy "*yy
+vnoremap <Leader>y "*y
+" vnoremap p "_dP
+nnoremap <Leader>p "*p
+vnoremap <Leader>p "*p
+nnoremap <Leader>P "*P
+vnoremap <Leader>P "*P
+
+nnoremap <Leader><SPACE>P "0P
+vnoremap <Leader><SPACE>P "0P
+nnoremap <Leader><SPACE>p "0P
+
+vnoremap <Leader><SPACE>p "0P
+
+map <Leader>wu <Action>(CloseAllEditorsButActive)
+map <Leader>wp <Action>(CloseContent)
+map <Leader>wi <SPACE>wu<SPACE>wp
+
+
+map <Leader>fu <Action>(FindUsages)
+map <Leader>u <Action>(ShowUsages)
+nmap <leader>h <Action>(HighlightUsagesInFile)
+
+map <Leader>c <Action>(RenameElement)<Esc>
+map <Leader>e <Action>(RecentFiles)
+" map ge <Action>(GotoNextError)
+" map gE <Action>(GotoPreviousError)
+
+" built-in navigation to navigated items works better
+nmap <c-o> <Action>(Back)
+nmap <c-i> <Action>(Forward)
+
+" code navigation
+" map gn <Action>(GotoNextElementUnderCaretUsage)
+" map gN <Action>(GotoPrevElementUnderCaretUsage)
+
+nmap U <C-R>
+nmap <Leader>\ :vsplit<CR>
+nnoremap <Esc> :nohl<CR>
