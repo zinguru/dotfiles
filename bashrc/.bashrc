@@ -11,3 +11,5 @@ source ~/.local/share/omarchy/default/bash/rc
 # alias p='python'
 alias vpn-up="sudo awg-quick up awg0"
 alias vpn-down="sudo awg-quick down awg0"
+
+alias ll="ls -lha"
